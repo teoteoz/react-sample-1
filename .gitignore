@@ -1,0 +1,11 @@
+#can be added with 'npm install' command
+/node_modules
+
+#created by webpack
+/dist
+
+#webstorm folder
+/.idea
+
+#npm debug log file
+/npm-debug.log
