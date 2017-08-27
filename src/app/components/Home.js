@@ -1,10 +1,38 @@
 import React from 'react';
 
 export class Home extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            age: props.initialAge,
+            clicks: props.initialClicks,
+            status: 0
+        } 
+    }
+    
+    onMakeOlder() {
+        this.setState({
+            age: this.state.age + 3,
+            clicks: this.state.clicks + 1,
+            status: this.state.clicks % 2 == 0 ? this.state.status + 1 : this.state.status
+        });
+    }
+
     render () {
 
-        var text = "Something";
-        
+        return (
+            <div>
+                <p>In a new component!</p>
+                <p>Your name is { this.props.name } and your age is { this.state.age }</p>
+                <p>TOT. CLICKS: { this.state.clicks }</p>
+                <p>Status: { this.state.status }</p>
+                <hr />
+                <button onClick={ () => this.onMakeOlder() } className="btn btn-primary">Make me older</button>
+            </div>
+        );
+
+        /**** 
         return (
             <div>
                 <p>In a new component!</p>
@@ -22,13 +50,14 @@ export class Home extends React.Component {
                 
             </div>
         );
+        */
     }
 }
 
 //force to use correctly props
 Home.propTypes = {
     name: React.PropTypes.string,
-    age: React.PropTypes.number,
-    user: React.PropTypes.object,
-    children: React.PropTypes.element.isRequired
+    initialAge: React.PropTypes.number
+    /*user: React.PropTypes.object,
+    children: React.PropTypes.element.isRequired*/
 };
