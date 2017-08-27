@@ -10,7 +10,7 @@ class App extends React.Component {
         super()
         this.state = {
             homeLink: "Home",
-            
+
         }
     }
     
@@ -42,7 +42,8 @@ class App extends React.Component {
                             initialAge={26} 
                             initialClicks={0} 
                             greet={this.onGreet} 
-                            changeLink={this.onChangeLinkName.bind(this)} />
+                            changeLink={this.onChangeLinkName.bind(this)} 
+                            initialLinkName={this.state.homeLink} />
                     </div>
                 </div>
 
