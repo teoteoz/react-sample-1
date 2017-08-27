@@ -7,15 +7,23 @@ export class Home extends React.Component {
         this.state = {
             age: props.initialAge,
             clicks: props.initialClicks,
+            status_p: 0,
             status: 0
-        } 
+
+        }
+        
+        setTimeout( () => {
+            this.setState({
+                status: 1
+            })
+        }, 3000) 
     }
     
     onMakeOlder() {
         this.setState({
             age: this.state.age + 3,
             clicks: this.state.clicks + 1,
-            status: this.state.clicks % 2 == 0 ? this.state.status + 1 : this.state.status
+            status_p: this.state.clicks % 2 == 0 ? this.state.status_p + 1 : this.state.status_p
         });
     }
 
@@ -26,6 +34,7 @@ export class Home extends React.Component {
                 <p>In a new component!</p>
                 <p>Your name is { this.props.name } and your age is { this.state.age }</p>
                 <p>TOT. CLICKS: { this.state.clicks }</p>
+                <p>Status P: { this.state.status_p }</p>
                 <p>Status: { this.state.status }</p>
                 <hr />
                 <button onClick={ () => this.onMakeOlder() } className="btn btn-primary">Make me older</button>
