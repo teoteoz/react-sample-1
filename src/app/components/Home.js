@@ -18,8 +18,37 @@ export class Home extends React.Component {
                 status: 1
             })
         }, 3000) 
+
+        console.log("constructor");
     }
     
+    componentWillMount() { // immediataly before initial rendering 
+        console.log("componentWillMount");
+    }
+    componentDidMount() { // immediataly after initial rendering 
+        console.log("componentDidMount");
+    }
+    componentWillReceiveProps(nextProps) { // when component receive ne props
+        console.log("componentWillReceiveProps", nextProps);
+    }
+    shouldComponentUpdate(nextProps, nextState) { // before rendering, after receiving new props and state (RETURN FALSE TO PREVENT RENDERING)
+        console.log("shouldComponentUpdate", nextProps, nextState);
+
+        return (nextState.status === 1) ? false : true;
+    }
+    componentWillUpdate(nextProps, nextState) { // before rendering, after receiving new props and state 
+        console.log("componentWillUpdate", nextProps, nextState);
+    }
+
+    componentDidUpdate(prevProps, nextProps) {
+        console.log("componentDidUpdate", prevProps, nextProps);
+    }
+
+    componentWillUnmount() {
+        console.log("componentWillUnmount");
+    }
+    
+
     onMakeOlder() {
         this.setState({
             age: this.state.age + 3,
